@@ -22,11 +22,11 @@ func (trie *Trie) ContainsWord(word string) bool {
 	for _, ch := range word {
 		currentNodeChild := currentNode.GetChild(ch)
 		if currentNodeChild == nil {
-			return false //, nil
+			return false
 		}
 		currentNode = currentNodeChild
 	}
-	return currentNode.IsEndOfWord //, nil
+	return currentNode.IsEndOfWord
 }
 
 // AddWord - a Trie method that adds a given word
