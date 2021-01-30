@@ -9,7 +9,7 @@ func TestTrie(t *testing.T) {
 			t.Error("the empty word must exist in the trie")
 		}
 	})
-	t.Run("when 'çilek', 'çile' and 'çilekçi' are added, both must exist in the trie", func(t *testing.T) {
+	t.Run("when 'çilek', 'çile' and 'çilekçi' are added, all must exist in the trie", func(t *testing.T) {
 		word1 := "çilek"
 		word2 := "çile"
 		word3 := "çilekçi"
