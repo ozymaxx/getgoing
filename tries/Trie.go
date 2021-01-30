@@ -48,7 +48,7 @@ func (trie *Trie) AddWord(word string) {
 	}
 	wordAsRuneArray := []rune(word)
 	for ; i < numRunes; i++ {
-		currentNode = currentNode.AddChild(wordAsRuneArray[i])
+		currentNode = currentNode.AddAndGetChild(wordAsRuneArray[i])
 	}
 	currentNode.MarkAsTerminal()
 }

@@ -20,11 +20,11 @@ func TestMarkAsTerminal(t *testing.T) {
 	}
 }
 
-func TestAddChild(t *testing.T) {
+func TestAddAndGetChild(t *testing.T) {
 	trieNode := (&TrieNode{}).Init()
 	t.Run("add a child A", func(t *testing.T) {
 		testRune := 'A'
-		if childNode := trieNode.AddChild(testRune); childNode == nil {
+		if childNode := trieNode.AddAndGetChild(testRune); childNode == nil {
 			t.Errorf("a child node must be created and must be pointed by the rune %v", testRune)
 		}
 	})
@@ -34,7 +34,7 @@ func TestGetChild(t *testing.T) {
 	trieNode := (&TrieNode{}).Init()
 	t.Run("retrieve the child A, which has already been added", func(t *testing.T) {
 		testRune := 'A'
-		childNode := trieNode.AddChild(testRune)
+		childNode := trieNode.AddAndGetChild(testRune)
 		if childNodeRetrieved := trieNode.GetChild(testRune); !(childNode == childNodeRetrieved && childNode != nil) {
 			t.Error("the child node could not be retrieved properly")
 		}

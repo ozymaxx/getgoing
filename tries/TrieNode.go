@@ -27,8 +27,8 @@ func (trieNode *TrieNode) GetChild(rn rune) *TrieNode {
 	return nil
 }
 
-// AddChild - a method that adds a child pointed by a rune
-func (trieNode *TrieNode) AddChild(rn rune) *TrieNode {
+// AddAndGetChild - a method that adds a child pointed by a rune
+func (trieNode *TrieNode) AddAndGetChild(rn rune) *TrieNode {
 	if val, ok := trieNode.Rune2ChildNode[rn]; ok {
 		return val
 	}
