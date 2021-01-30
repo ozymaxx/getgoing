@@ -1,7 +1,5 @@
 package ozymaxx
 
-import "unicode/utf8"
-
 // Trie - a struct that represents a trie structure where
 // a rune points to a child node
 type Trie struct {
@@ -31,24 +29,9 @@ func (trie *Trie) ContainsWord(word string) bool {
 
 // AddWord - a Trie method that adds a given word
 func (trie *Trie) AddWord(word string) {
-	i := 0
 	currentNode := trie.Root
 	for _, ch := range word {
-		currentNodeChild := currentNode.GetChild(ch)
-		if currentNodeChild == nil {
-			break
-		}
-		i++
-		currentNode = currentNodeChild
-	}
-	numRunes := utf8.RuneCountInString(word)
-	if i == numRunes {
-		currentNode.MarkAsTerminal()
-		return
-	}
-	wordAsRuneArray := []rune(word)
-	for ; i < numRunes; i++ {
-		currentNode = currentNode.AddAndGetChild(wordAsRuneArray[i])
+		currentNode = currentNode.AddAndGetChild(ch)
 	}
 	currentNode.MarkAsTerminal()
 }
