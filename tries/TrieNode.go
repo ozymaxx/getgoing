@@ -3,19 +3,19 @@ package ozymaxx
 // TrieNode - a structure that represents a trie node
 type TrieNode struct {
 	Rune2ChildNode map[rune]*TrieNode
-	IsEndOfWord    bool
+	IsTerminal     bool
 }
 
 // Init - a method initialising the properties of a TrieNode
 func (trieNode *TrieNode) Init() *TrieNode {
 	trieNode.Rune2ChildNode = make(map[rune]*TrieNode)
-	trieNode.IsEndOfWord = false
+	trieNode.IsTerminal = false
 	return trieNode
 }
 
-// MarkEndOfWord - a method setting IsEndOfWord to true
-func (trieNode *TrieNode) MarkEndOfWord() {
-	trieNode.IsEndOfWord = true
+// MarkAsTerminal - a method setting IsTerminal to true
+func (trieNode *TrieNode) MarkAsTerminal() {
+	trieNode.IsTerminal = true
 }
 
 // GetChild - a method that returns the children node pointed by a string

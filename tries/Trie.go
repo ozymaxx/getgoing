@@ -11,7 +11,7 @@ type Trie struct {
 // Init - a method of the Trie class initialising the root node
 func (trie *Trie) Init() *Trie {
 	trie.Root = (&TrieNode{}).Init()
-	trie.Root.MarkEndOfWord()
+	trie.Root.MarkAsTerminal()
 	return trie
 }
 
@@ -26,7 +26,7 @@ func (trie *Trie) ContainsWord(word string) bool {
 		}
 		currentNode = currentNodeChild
 	}
-	return currentNode.IsEndOfWord
+	return currentNode.IsTerminal
 }
 
 // AddWord - a Trie method that adds a given word
@@ -43,12 +43,12 @@ func (trie *Trie) AddWord(word string) {
 	}
 	numRunes := utf8.RuneCountInString(word)
 	if i == numRunes {
-		currentNode.MarkEndOfWord()
+		currentNode.MarkAsTerminal()
 		return
 	}
 	wordAsRuneArray := []rune(word)
 	for ; i < numRunes; i++ {
 		currentNode = currentNode.AddChild(wordAsRuneArray[i])
 	}
-	currentNode.MarkEndOfWord()
+	currentNode.MarkAsTerminal()
 }

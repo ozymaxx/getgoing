@@ -7,16 +7,16 @@ func TestInit(t *testing.T) {
 	if rune2ChildNode := trieNode.Rune2ChildNode; rune2ChildNode == nil {
 		t.Error("the rune -> children node map must be initialized")
 	}
-	if trieNode.IsEndOfWord {
-		t.Error("the IsEndOfWord property must initially be false")
+	if trieNode.IsTerminal {
+		t.Error("the IsTerminal property must initially be false")
 	}
 }
 
-func TestMarkEndOfWord(t *testing.T) {
+func TestMarkAsTerminal(t *testing.T) {
 	trieNode := (&TrieNode{}).Init()
-	trieNode.MarkEndOfWord()
-	if !trieNode.IsEndOfWord {
-		t.Error("the IsEndOfWord property must be true")
+	trieNode.MarkAsTerminal()
+	if !trieNode.IsTerminal {
+		t.Error("the IsTerminal property must be true")
 	}
 }
 
